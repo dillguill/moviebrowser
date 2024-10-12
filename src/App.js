@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import HomeView from './components/HomeView';
+import AboutView from './components/AboutView';
+import { Routes, Route } from 'react-router-dom';
+
+// Write in a switch statement
+/* swith(case) {
+  case "Thing":
+    do something
+    break;
+  case default:
+    do something;
+    break
+} */
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/about" element={<AboutView />} />
+      </Routes>
     </div>
   );
 }
