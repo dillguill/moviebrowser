@@ -12,12 +12,14 @@ function App() {
 
   useEffect(() => {
     // console.log(searchText, "is the search text")
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=bfe72e251205c6f02b8dcd2ba5e3a582&language=en-US&query=${searchText}&page=1&include_adult=false`)
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data)
-        setSearchResults(data.results)
-      })
+   if(searchText) {
+     fetch(`https://api.themoviedb.org/3/search/movie?api_key=bfe72e251205c6f02b8dcd2ba5e3a582&language=en-US&query=${searchText}&page=1&include_adult=false`)
+       .then(response => response.json())
+       .then(data => {
+         // console.log(data)
+         setSearchResults(data.results)
+       })
+   }
   }, [searchText])
 
   return (

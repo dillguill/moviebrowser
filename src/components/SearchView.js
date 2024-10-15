@@ -5,9 +5,14 @@ import Hero from "./Hero";
 const SearchView = ({ keyword, searchResults }) => {
   const title = `You are searching for ${keyword}`; // adds keyword to what you are searching in Hero section
 
+  const resultsHtml = searchResults.map((obj, i) => {
+    return <div key={i}>{obj.original_title}</div>
+  })
+
   return (
     <>
       <Hero text={title} />
+      {resultsHtml}
     </>
   );
 };
