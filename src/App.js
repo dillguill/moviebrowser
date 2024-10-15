@@ -7,12 +7,12 @@ import SearchView from "./components/SearchView";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]); //Loop through map results; will be props of SearchView
-  const [searchText, setSearchText] = useState(""); // Shows results; setSearchText will change searchText it will re-render the entire application (there's a way around using useEffect; will learn later)
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchText, setSearchText] = useState(""); // Set search state
 
   return (
     <div>
-      <Navbar />
+      <Navbar searchText={searchText} setSearchText={setSearchText} /> {/* Add search function to navbar from const */}
       <Routes>
         <Route path="/" element={<HomeView />} />
         <Route path="/about" element={<AboutView />} />
