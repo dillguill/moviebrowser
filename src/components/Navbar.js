@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom"; // add import
+import { useNavigate, Link } from "react-router-dom";
 
 // deconstruct SearchText
 const Navbar = ({ searchText, setSearchText }) => {
+  const navigate = useNavigate()
   // update and set SearchText
   const updateSearchText = (e) => {
+    // force user to go to search page
+    navigate('/search');
     // console.log(e.target.value)
     setSearchText(e.target.value);
   };
