@@ -6,6 +6,7 @@ const MovieView = () => {
   const { id } = useParams( )
 //   console.log(id)
   const [ movieDetails, setMovieDetails ] = useState({})
+  const [ isLoading, setIsLoading ] = useState(true)
 
   useEffect(() => {
     // console.log('make an api request', id)
@@ -13,14 +14,20 @@ const MovieView = () => {
         .then(response => response.json())
         .then(data => {
             setMovieDetails(data)
+            setIsLoading(false) // once loaded is set to false
         })
   }, [id])
 
-  return (
-    <>
-      <Hero text={movieDetails.original_title} />
-    </>
-  );
+  function renderMovieDetails() {
+    if(isLoading) {
+        return <Hero text="Loading ..." />
+    }
+    if(movieDetails) {
+      return <Hero text={movieDetails.original_title} />
+    }
+  }
+
+  return renderMovieDetails()
 };
 
 export default MovieView;
