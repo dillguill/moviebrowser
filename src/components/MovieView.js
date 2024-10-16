@@ -9,7 +9,7 @@ const MovieView = () => {
 
   useEffect(() => {
     // console.log('make an api request', id)
-    fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=bfe72e251205c6f02b8dcd2ba5e3a582&language=en-US`)
         .then(response => response.json())
         .then(data => {
             setMovieDetails(data)
