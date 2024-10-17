@@ -1,14 +1,20 @@
 import { useNavigate, Link } from "react-router-dom";
 
-// deconstruct SearchText
+  // Deconstruct searchText and setSearchText
 const Navbar = ({ searchText, setSearchText }) => {
-  const navigate = useNavigate()
-  // update and set SearchText
+  const navigate = useNavigate();
+
+  // Update and set searchText when user types
   const updateSearchText = (e) => {
-    // force user to go to search page
-    navigate('/search');
-    // console.log(e.target.value)
     setSearchText(e.target.value);
+  };
+
+  // Handle form submission for the search
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
+    if (searchText.trim()) {
+      navigate("/search"); // Navigate to the search page
+    }
   };
 
   return (
@@ -46,14 +52,14 @@ const Navbar = ({ searchText, setSearchText }) => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchText} // add value
-              onChange={updateSearchText} // add onChange
+              value={searchText} // Bind searchText to input
+              onChange={updateSearchText} // Handle search input change
             />
             <button className="btn btn-outline-success" type="submit">
               Search
