@@ -2,7 +2,10 @@ import Hero from "./Hero";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-    const posterUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+    const posterUrl = movie.poster_path
+      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+      : "https://via.placeholder.com/500x750?text=No+Image+Available";
+
     const detailUrl = `/movies/${movie.id}`
     return (
         <div className="col-lg-3 col-md-3 col-2 my-4">
