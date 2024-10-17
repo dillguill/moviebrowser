@@ -5,6 +5,7 @@ import HomeView from "./components/HomeView";
 import AboutView from "./components/AboutView";
 import MovieView from "./components/MovieView";
 import SearchView from "./components/SearchView";
+import NotFound from "./components/NotFound";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <SearchView keyword={searchText} searchResults={searchResults} />
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
