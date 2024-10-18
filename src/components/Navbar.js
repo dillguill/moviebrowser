@@ -18,7 +18,7 @@ const Navbar = ({ searchText, setSearchText }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Movie Browser
@@ -61,7 +61,7 @@ const Navbar = ({ searchText, setSearchText }) => {
               value={searchText} // Bind searchText to input
               onChange={updateSearchText} // Handle search input change
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-primary" type="submit">
               Search
             </button>
           </form>
