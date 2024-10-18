@@ -25,7 +25,6 @@ const MovieView = () => {
       return <Hero text="Loading ..." />;
     }
     if (movieDetails) {
-      // TODO: Deal with a possible missing image (null)
       const posterPath = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
       const backdropUrl = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`
       return (
@@ -41,8 +40,25 @@ const MovieView = () => {
                 />
               </div>
               <div className="col-md-9">
-                <h2>{movieDetails.original_title}</h2>
-                <p className="lead">{movieDetails.overview}</p>
+              <h2 className="mb-4">{movieDetails.original_title}</h2>
+                <h4 className="mb-4">{movieDetails.tagline}</h4>
+                <p className="lead mb-4">{movieDetails.overview}</p>
+                <ul className="list-unstyled">
+                  <li className="mb-2">
+                    <strong>Rating:</strong> {movieDetails.vote_average}/10
+                  </li>
+                  <li className="mb-2">
+                    <strong>Release Date:</strong> {movieDetails.release_date}
+                  </li>
+                  <li className="mb-2">
+                    <strong>Runtime:</strong> {movieDetails.runtime} minutes
+                  </li>
+                  {movieDetails.genres && (
+                    <li className="mb-2">
+                      <strong>Genres:</strong> {movieDetails.genres.map(genre => genre.name).join(", ")}
+                    </li>
+                  )}
+                </ul>
               </div>
             </div>
           </div>
